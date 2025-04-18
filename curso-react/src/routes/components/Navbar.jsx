@@ -1,7 +1,16 @@
 import { NavLink,Link } from "react-router-dom"
+import { useFormState } from "../hooks/useFormState"
 
 export const Navbar = () => {
-  return (
+	const initialForm = {
+		name:"",
+		email:"",
+		age:""
+	}
+
+
+
+	return (
 		<>
 			<nav className="navbar navbar-expand-lg bg-body-tertiary">
 				<div className="container-fluid">

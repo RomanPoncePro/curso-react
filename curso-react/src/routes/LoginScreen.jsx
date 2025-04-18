@@ -1,20 +1,38 @@
+import { useFormState } from "./hooks/useFormState"
+import { useContext } from "react"
+import { UsuarioContext } from "./context/UsuarioContext"
+
 export const LoginScreen = () => {
+  
+  const onSubmit = (e) => {
+    e.preventDefault()
+    setUsuario(formState)
+  }
+  
+  const initialForm = {
+    name:"",
+    email:"",
+    age:""
+  }
+  
+  const { setUsuario } = useContext(UsuarioContext)
+
+  const {formState,name,email,age,onInputChange} = useFormState(initialForm)
+
+
   return(
     <>
-    <form>
+    <form onSubmit={onSubmit} >
       <div className="input-group mb-3">
-        <span className="input-group-text" id="basic-addon1">name</span>
-        <input type="text" className="form-control" placeholder="name" aria-label="name" aria-describedby="basic-addon1"/>
+        <input onChange={onInputChange} value={name} name="name" type="text" className="form-control" placeholder="name"/>
       </div>
       <div className="input-group mb-3">
-        <input type="text" className="form-control" placeholder="email" aria-label="email" aria-describedby="basic-addon2"/>
-        <span className="input-group-text" id="basic-addon2">@example.com</span>
+        <input onChange={onInputChange} value={email} name="email" type="text" className="form-control" placeholder="email"/>
       </div>
       <div className="input-group mb-3">
-        <input type="text" className="form-control" placeholder="age" aria-label="age" aria-describedby="basic-addon2"/>
-        <span className="input-group-text" id="basic-addon2">12</span>
+        <input onChange={onInputChange} value={age} name="age" type="text" className="form-control" placeholder="age"/>
       </div>
-      <button type="submit">Enviar</button>
+      <button className="btn btn-primary" type="submit">Enviar</button>
     </form>
     </>
   )

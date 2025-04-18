@@ -17,13 +17,14 @@ export const useFormState = (
 	const onSubmit = (event) => {
 		event.preventDefault();
 		setStateForm({
-			...formState,
-			currentResponse: '',
-		})
+			...formState})
+		console.log(formState)
+
 	};
 
 	return {
 		formState,
+		...formState,
 		onInputChange,
 		onSubmit,
 	};
