@@ -1,5 +1,16 @@
+import { useContext } from 'react';
+import { UsuarioContext } from './context/UsuarioContext'
+
 export const HomeScreen = () => {
+  
+  const { usuario } = useContext(UsuarioContext)
+  console.log({usuario})
+
   return(
-    <h1>HomeScreen </h1>
+    <>
+    <p>{usuario.name}</p>
+    <p>{usuario.age}</p>
+    <p>{usuario.email}</p>
+    </>
   )
 }
